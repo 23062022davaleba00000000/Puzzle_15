@@ -14,7 +14,7 @@ let spaceX;
 
 {
 
-	var puzzleArea = document.getElementById('puzzlearea');
+	let puzzleArea = document.getElementById('puzzlearea');
 	gamePiece = puzzleArea.getElementsByTagName('div'); // puzzlearea-ში ელემენტებთან წვდომის მიღება.
 
 	for (let i=0;//igamePiece.length;//i++) // ატრიბუტების მინიჭება პაზლის თითოეულ ნაწილზე. 
@@ -101,121 +101,75 @@ let spaceX;
 		{
 
 			let rand = parseInt(Math.random() 100) %4; // შემთხვევითად ქმნის რიცხვს ფრაგმენტების ასარევად.
-			if (rand == 0)
-
+			if (rand == 0) // თუ ეს რიცხვი ნულის ტოლია,
 			{
-
-				var temp = up(spaceX, spaceY);//
-
+				let temp = up(spaceX, spaceY); // ფრაგმენტი გადაადგილდება ზევით.
 				if ( temp != -1)
-
 				{
-
 					swap(temp);
-
 				}
-
 			}
 
-			if (rand == 1)
+			if (rand == 1) // თუ ეს რიცხვი ერთის ტოლია,
 
 			{
-
-				let temp = down(spaceX, spaceY);
-
+				let temp = down(spaceX, spaceY); // ფრაგმენტი გადაადგილდება ქვევით.
 				if ( temp != -1) 
-
 				{
-
 					swap(temp);
-
 				}
-
 			}
 
-
-
-			if (rand == 2)
-
+			if (rand == 2) // თუ ეს რიცხვი ერთის ტოლია,
 			{
-
-				let temp = left(spaceX, spaceY);
-
+				let temp = left(spaceX, spaceY); // ფრაგმენტი გადაადგილდება მარცხნივ.
 				if ( temp != -1)
-
 				{
-
 					swap(temp);
-
 				}
-
 			}
 
-
-			if (rand == 3)
-
+ 
+			if (rand == 3) // თუ ეს რიცხვი ერთის ტოლია,
 			{
 
-				let temp = right(spaceX, spaceY);
-
+				let temp = right(spaceX, spaceY); // ფრაგმენტი გადაადგილდება მარჯვნივ.
 				if (temp != -1)
-
 				{
-
 					swap(temp);
-
 				}
-
 			}
-
 		}
-
 	};
-
 };
 
 
 
-function checkMove(position)  returns true whenever a piece can be moved into an empty space
+function checkMove(position) // returns true whenever a piece can be moved into an empty space
 // აბრუნებს true-ს, როცა ფრაგმენტი შეიძლება გადატანილი იყოს ცარიელ სივრცეში.
 {
-
-	if (left(spaceX, spaceY) == (position-1))
+	if (left(spaceX, spaceY) == (position-1)) // აბრუნებს true-ს, თუ შეიძლება მარცხნივ გადატანა.
 
 	{
-
 		return true;
+	}
 
+	if (down(spaceX, spaceY) == (position-1)) // აბრუნებს true-ს, თუ შეიძლება ქვემოთ გადატანა.
+
+	{
+		return true;
+	}
+
+	if (up(spaceX, spaceY) == (position-1)) // აბრუნებს true-ს, თუ შეიძლება ზევით გადატანა.
+	{
+		return true;
 	}
 
 
 
-	if (down(spaceX, spaceY) == (position-1))
-
+	if (right(spaceX, spaceY) == (position-1)) // აბრუნებს true-ს, თუ შეიძლება მარჯვნივ გადატანა.
 	{
-
 		return true;
-
-	}
-
-
-
-	if (up(spaceX, spaceY) == (position-1))
-
-	{
-
-		return true;
-
-	}
-
-
-
-	if (right(spaceX, spaceY) == (position-1))
-
-	{
-
-		return true;
-
 	}
 
 }
@@ -257,8 +211,6 @@ function Notify() notifies the user
 
     timer= setTimeout(Notify, 200); // მომხმარებლის ინფორმირება 2 წამის განმავლობაში.
 }
-
-
 
 function win() notifies user that they have won
 // მომხმარებელის ინფორმირება გამარჯვების შემთხვევაში.
