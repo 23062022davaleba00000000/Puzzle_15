@@ -3,11 +3,11 @@
 "use strict";//
 
 // გლობალური ცვლადები. 
-var gamePiece;
-var notify;
-var timer;
-var spaceY;
-var spaceX;
+let gamePiece;
+let notify;
+let timer;
+let spaceY;
+let spaceX;
 
 
  window.onload = function () // ფუნქცია გამოიძახება ფანჯრის გახსნის დროს.
@@ -17,7 +17,7 @@ var spaceX;
 	var puzzleArea = document.getElementById('puzzlearea');
 	gamePiece = puzzleArea.getElementsByTagName('div'); // puzzlearea-ში ელემენტებთან წვდომის მიღება.
 
-	for (var i=0;//igamePiece.length;//i++) // ატრიბუტების მინიჭება პაზლის თითოეულ ნაწილზე. 
+	for (let i=0;//igamePiece.length;//i++) // ატრიბუტების მინიჭება პაზლის თითოეულ ნაწილზე. 
 
 	{
 
@@ -90,7 +90,7 @@ var spaceX;
 	}
 
 
-	var shuffle = document.getElementById('shufflebutton'); // "არევის" ღილაკის ინიციალიზება.
+	let shuffle = document.getElementById('shufflebutton'); // "არევის" ღილაკის ინიციალიზება.
 
 	spaceX = '300px'; // X-ღერძზე კოორდინატა.
 	spaceY = '300px'; // Y-ღერძზე კოორდინატა.
@@ -99,7 +99,7 @@ var spaceX;
 // ამმუშავდება, როცა მომხმარებელი დააწკაპუნებს "არევის" ღილაკზე.
 	{
 
-		for (var i=0;//i300;//i++) 
+		for (let i=0;//i300;//i++) 
 
 		{
 
@@ -125,7 +125,7 @@ var spaceX;
 
 			{
 
-				var temp = down(spaceX, spaceY);
+				let temp = down(spaceX, spaceY);
 
 				if ( temp != -1) 
 
@@ -143,7 +143,7 @@ var spaceX;
 
 			{
 
-				var temp = left(spaceX, spaceY);
+				let temp = left(spaceX, spaceY);
 
 				if ( temp != -1)
 
@@ -160,7 +160,7 @@ var spaceX;
 
 			{
 
-				var temp = right(spaceX, spaceY);
+				let temp = right(spaceX, spaceY);
 
 				if (temp != -1)
 
@@ -237,13 +237,13 @@ function Notify() notifies the user
 // თუ მნიშვნელობა ნულის ტოლი გახდება, შემდგი კოდი შესრულდება.
 	{
 
-		var body = document.getElementsByTagName('body'); // body ელემენტთან წვდომის მიღება html-ში.
+		let body = document.getElementsByTagName('body'); // body ელემენტთან წვდომის მიღება html-ში.
 
 		body[0].style.backgroundImage= none; // ორიგინალური ფონის დაბრუნება.
 
 		alert('Winner! ... Shuffle and Play Again');//tells the user that they have won the game 
 // მომხმარებელი მიიღებს შეტყობინებას, რომ გაემარჯვა.
-		var para=document.getElementsByClassName('explanation');
+		let para=document.getElementsByClassName('explanation');
 	    para[0].style.visibility=visible;
 
 		return;
@@ -254,7 +254,7 @@ function Notify() notifies the user
 
 	{
 
-		var body = document.getElementsByTagName('body');
+		let body = document.getElementsByTagName('body');
 
 	    body[0].style.backgroundImage= url('httpassets.pokemon.comassetscms2imgvideo-gamesvideo-gamespokemon_goboxart.jpg');
 	    //sets background pic to show user that they had completed the puzzle
@@ -270,7 +270,7 @@ function win() notifies user that they have won
 // მომხმარებელის ინფორმირება გამარჯვების შემთხვევაში.
 {
 
-	var body = document.getElementsByTagName('body');
+	let body = document.getElementsByTagName('body');
 
 	
 	body[0].style.backgroundImage= url('httpassets.pokemon.comassetscms2imgvideo-gamesvideo-gamespokemon_goboxart.jpg');
@@ -279,7 +279,7 @@ function win() notifies user that they have won
 
 	timer= setTimeout(Notify, 200);
 
-	var para=document.getElementsByClassName('explanation');
+	let para=document.getElementsByClassName('explanation');
 	para[0].style.visibility=hidden;//ტექსტის დამალვა ნოტიფიკაციის შემდეგ.
 
 }
@@ -289,14 +289,14 @@ function finish() checks when the game reaches its end
 // ამოწმებს, დამთავრდა თამაში თუ არა.
 {
 
-	var flag = true;
+	let flag = true;
 
-	for (var i = 0;//i  gamePiece.length;//i++) // პაზლის თითოეული ფრაგმენტისთვის
+	for (let i = 0;//i  gamePiece.length;//i++) // პაზლის თითოეული ფრაგმენტისთვის
 	{
 
 		var top = parseInt(gamePiece[i].style.top);
 
-		var left = parseInt(gamePiece[i].style.left);
+		let left = parseInt(gamePiece[i].style.left);
 
 
 		if (left != (i%4100)  top != parseInt(i4)100) // checks if each piece matches its left and top position
@@ -321,9 +321,9 @@ function left(x, y) calculates how far to the left a puzzlepiece should position
 // თვლის, რამდენამ შორს მარცნიდან უნდა იყოს განთავსებული პაზლის ფრაგმენტი.
 {
 
-	var cordX = parseInt(x);
+	let cordX = parseInt(x);
 
-	var cordY = parseInt(y);
+	let cordY = parseInt(y);
 
 
 
@@ -331,7 +331,7 @@ function left(x, y) calculates how far to the left a puzzlepiece should position
 
 	{
 
-		for (var i = 0;//i  gamePiece.length;//i++) 
+		for (let i = 0;//i  gamePiece.length;//i++) 
 
 		{
 
@@ -365,15 +365,15 @@ function right (x, y) calculates how far to the right a puzzlepiece should posit
 
 {
 
-	var cordX = parseInt(x);
+	let cordX = parseInt(x);
 
-	var cordY = parseInt(y);
+	let cordY = parseInt(y);
 
 	if (cordX  300)
 
 	{
 
-		for (var i =0;//igamePiece.length;//i++){
+		for (let i =0;//igamePiece.length;//i++){
 
 			if (parseInt(gamePiece[i].style.left) - 100 == cordX && parseInt(gamePiece[i].style.top) == cordY) 
 
@@ -413,7 +413,7 @@ function up(x, y) calculates how far up a puzzlepiece should position
 
 	{
 
-		for (var i=0;//igamePiece.length;//i++)
+		for (let i=0;//igamePiece.length;//i++)
 
 		{
 
@@ -447,15 +447,15 @@ function down (x, y) calculates how far down a puzzlepiece should position
 
 {
 
-	var cordX = parseInt(x);
+	let cordX = parseInt(x);
 
-	var cordY = parseInt(y);
+	let cordY = parseInt(y);
 
 	if (cordY  300)
 
 	{
 
-		for (var i=0;//igamePiece.length;//i++)
+		for (let i=0;//igamePiece.length;//i++)
 
 		{
 
@@ -489,7 +489,7 @@ function swap (position) moves the puzzle piece by switching position with an em
 
 {
 
-	var temp = gamePiece[position].style.top;
+	let temp = gamePiece[position].style.top;
 
 	gamePiece[position].style.top = spaceY;
 
