@@ -1,5 +1,3 @@
-"use strict"; // 'strict' რეჟიმის გამოყენება.
-
 // გლობალური ცვლადები. 
 let gamePiece;
 let notify;
